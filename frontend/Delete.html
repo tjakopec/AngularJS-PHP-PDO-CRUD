@@ -1,0 +1,21 @@
+<h2>Detalji autora</h2>
+<div class="row">
+	<div class="col-md-6">
+		<form novalidate name="FormaDodajNovi" id="add-new-form" method="post" action="">
+			<input type="hidden" ng-model="autor.sifra" value="{{autor.sifra}}" />
+			<div class="form-group">
+				Ime: {{autor.ime}}
+			</div>
+			<div class="form-group">
+				Prezime: {{autor.prezime}}
+			</div>
+			<div class="form-group">
+				Datum rođenja: {{autor.datumrodenja}}
+			</div>
+			<button class="btn btn-danger" ng-click="Delete_Autor(autor)">
+				Obriši <span class="glyphicon glyphicon-trash"></span>
+			</button>
+			<a href="#/" class="btn">Odustani</a>
+		</form>
+	</div>
+</div>

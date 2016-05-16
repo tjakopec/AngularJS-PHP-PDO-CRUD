@@ -1,0 +1,24 @@
+<h2>Detalji autora</h2>
+<div class="row">
+	<div class="col-md-6">
+		<form novalidate name="FormaDodajNovi" id="add-new-form" method="post" action="">
+			<input type="hidden" ng-model="autor.sifra" value="{{autor.sifra}}" />
+			<div class="form-group">
+				<label>Ime</label>
+				<input class="form-control" type="text" ng-model="autor.ime" value="{{autor.ime}}" required />
+			</div>
+			<div class="form-group">
+				<label>Prezime</label>
+				<input class="form-control" type="text" ng-model="autor.prezime" value="{{autor.prezime}}" required />
+			</div>
+			<div class="form-group">
+				<label>Datum rođenja</label>
+				<input class="form-control" type="date" ng-model="autor.datumrodenja" value="{{autor.datumrodenja}}" />
+			</div>
+			<button class="btn btn-primary" ng-disabled="FormaDodajNovi.$invalid || isUnchanged(autor)" id="add-new-btn" ng-click="Update_Autor(autor)">
+				Promijeni<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<a href="#/" class="btn">Odustani</a>
+		</form>
+	</div>
+</div>

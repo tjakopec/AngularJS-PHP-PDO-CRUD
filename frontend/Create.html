@@ -1,0 +1,23 @@
+<h2>Novi Autor</h2>
+<div class="row">
+	<div class="col-md-6">
+		<form name="FormaDodajNovi" id="add-new-form" method="post" action="">
+			<div class="form-group">
+				<label for="name">Ime</label>
+				<input class="form-control" type="text" ng-model="autor.ime" required />
+			</div>
+			<div class="form-group">
+				<label for="name">Prezime</label>
+				<input class="form-control" type="text" ng-model="autor.prezime" required />
+			</div>
+			<div class="form-group">
+				<label for="datumrodenja">Datum rođenja</label>
+				<input class="form-control" type="date" ng-model="autor.datumrodenja" />
+			</div>
+			<button class="btn btn-primary" ng-disabled="FormaDodajNovi.$invalid || isUnchanged(autor)" id="add-new-btn" ng-click="Create_Autor(autor)">
+				Dodaj
+			</button>
+			<a href="#/" class="btn">Odustani</a>
+		</form>
+	</div>
+</div>
