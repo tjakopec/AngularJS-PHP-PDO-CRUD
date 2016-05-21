@@ -1,8 +1,8 @@
 <?php
 
 $dbhost = "localhost";
-$dbuser = "tjakopec";
-$dbpass = "tjakopec";
-$dbname = "tjakopec_1";
+$dbuser = "root";
+$dbpass = "000000";
+$dbname = "angularcrud";
 $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);	
 $pdo->exec("set names utf8");
