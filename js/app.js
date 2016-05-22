@@ -1,4 +1,6 @@
-var app = angular.module('Aplikacija', ['ngRoute']);
+
+
+var app = angular.module('Aplikacija', ['ngRoute','angularUtils.directives.dirPagination']);
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/ReadAutor', {templateUrl: 'frontend/Read.html', controller: 'AutorReadController'}).
@@ -25,12 +27,12 @@ app.controller ('AutorReadController',[
     
     function getAutoriZaStranicu(brojStranice,uvjet) {
         $http.get('backend/Read.php?uvjet=' + uvjet + "&brojStranice=" + brojStranice)
-            .then(function(data) {
-                angular.forEach(data.autori, function(value, key) {
+            .then(function(response) {
+                angular.forEach(response.data.autori, function(value, key) {
 				    value.datumrodenja = new Date(value.datumrodenja);
 				 });	
-		        $scope.autori = data.autori; 
-                $scope.ukupnoAutora = data.ukupno;
+		        $scope.autori = response.data.autori; 
+                $scope.ukupnoAutora = response.data.ukupno;
             });
     }
   	

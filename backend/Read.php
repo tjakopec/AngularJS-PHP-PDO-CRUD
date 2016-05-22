@@ -14,7 +14,7 @@ if(isset($_GET["sifra"])){
 	$izraz = $pdo->prepare("select * from autor where concat(sifra, ' ',ime, ' ',prezime) like :uvjet limit :brojStranice,10");
 	$uvjet= "%" . $_GET["uvjet"] . "%";
 	$izraz->bindParam("uvjet", $uvjet);
-	$izraz->bindValue("brojStranice", (int)$_GET["brojStranice"], PDO::PARAM_INT);
+	$izraz->bindValue("brojStranice", (((int)$_GET["brojStranice"])*10) - 10, PDO::PARAM_INT);
 	$izraz->execute();
 	$data->autori = $izraz->fetchAll(PDO::FETCH_OBJ);
 	echo json_encode($data);
