@@ -10,14 +10,33 @@ app.config(['$routeProvider', function($routeProvider) {
 app.controller ('AutorReadController',[
   '$scope','$http',
   function ($scope, $http) {
-      $http.get('backend/Read.php').success(function(data) {
-      	
-	     angular.forEach(data, function(value, key) {
-		    value.datumrodenja = new Date(value.datumrodenja);
-		 });
-      	
-        $scope.autori = data;  
-      });
+  	
+  	$scope.autori = [];
+    $scope.ukupnoAutora = 0;
+    getAutoriZaStranicu(1,"");
+
+    $scope.pagination = {
+        current: 1
+    };
+
+    $scope.stranicaPromjenjena = function(novaStranica,uvjet) {
+        getAutoriZaStranicu(novaStranica,uvjet);
+    };
+    
+    function getAutoriZaStranicu(brojStranice,uvjet) {
+        $http.get('backend/Read.php?uvjet=' + uvjet + "&brojStranice=" + brojStranice)
+            .then(function(data) {
+                angular.forEach(data.autori, function(value, key) {
+				    value.datumrodenja = new Date(value.datumrodenja);
+				 });	
+		        $scope.autori = data.autori; 
+                $scope.ukupnoAutora = data.ukupno;
+            });
+    }
+  	
+  	$scope.Read_Autor = function(uvjet){
+      getAutoriZaStranicu(1,uvjet);
+    };
   }    
 ]),
 app.controller ('AutorCreateController',[

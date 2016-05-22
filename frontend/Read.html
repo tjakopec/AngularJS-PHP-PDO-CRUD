@@ -1,5 +1,13 @@
 <h2>Autori</h2>
 <div>
+	<form>
+	    <div class="form-group">
+	      <div class="input-group">
+	        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+	        <input type="text" class="form-control" placeholder="Pretraživanje autora" ng-model="uvjet" ng-change="Read_Autor(uvjet)">
+	      </div>      
+	    </div>
+	  </form>
 	<table class="table table-condensed">
 		<thead>
 			<tr>
@@ -11,7 +19,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="autor in autori | orderBy: 'prezime'">
+			<tr dir-paginate="autor in autori | itemsPerPage: 10" total-items="ukupnoAutora" current-page="pagination.current">
 				<td>{{autor.sifra}}</td>
 				<td>{{autor.ime}}</td>
 				<td>{{autor.prezime}}</td>
@@ -20,5 +28,6 @@
 			</tr>
 		</tbody>
 	</table>
+	<dir-pagination-controls on-page-change="stranicaPromjenjena(newPageNumber)"></dir-pagination-controls>
 	<a class="btn btn-primary" href="#/CreateAutor">Dodaj novog autora</a>
 </div>
