@@ -60,7 +60,7 @@ app.controller ('AutorCreateController',[
 ]),
 app.controller('AutorUpdateController',[
   '$scope','$http','$location','$routeParams',
-  function ($scope, $http, $location, $routeParams) {	
+  function ($scope, $http, $location, $routeParams) {
       $scope.activePath = null;
 	  var sifra = $routeParams.sifra;
       $http.get('backend/Read.php?sifra=' + sifra).success(function(data) {
@@ -69,9 +69,14 @@ app.controller('AutorUpdateController',[
       });
       $scope.Update_Autor = function(autor) {
       	console.log(autor);
-          $http.put('backend/Update.php', autor).success(function(data) {
-          $scope.activePath = $location.path('/');
+          $http.post('backend/Update.php', autor).success(function(data) {
+            $scope.reset();
+            $scope.activePath = $location.path('/');
         });
+        $scope.reset = function() {
+            $scope.autor = angular.copy($scope.master);
+        };
+        $scope.reset();
       };
   }
 ]);
