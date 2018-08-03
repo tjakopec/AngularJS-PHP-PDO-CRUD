@@ -7,7 +7,6 @@ if(isset($_GET["sifra"])){
 	$autor->datumrodenja = date( 'Y-m-d', strtotime( $autor->datumrodenja ) );
 	echo json_encode($autor);	
 }else{
-	$_GET["uvjet"]=="undefined" ? "" : $_GET["uvjet"];
 	$data=new stdClass();
 	$izraz = $pdo->prepare("select count(sifra) from autor where concat(sifra, ' ',ime, ' ',prezime) like :uvjet");
 	$izraz->execute(array("uvjet"=> "%" . $_GET["uvjet"] . "%"));
