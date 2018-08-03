@@ -26,7 +26,7 @@ app.controller ('AutorReadController',[
     };
     
     function getAutoriZaStranicu(brojStranice,uvjet) {
-        $http.get('backend/Read.php?uvjet=' + uvjet + "&brojStranice=" + brojStranice)
+        $http.get('backend/Read.php?uvjet=' + (uvjet==undefined ? "" : uvjet) + "&brojStranice=" + brojStranice)
             .then(function(response) {
                 angular.forEach(response.data.autori, function(value, key) {
 				    value.datumrodenja = new Date(value.datumrodenja);

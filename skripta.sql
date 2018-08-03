@@ -2,9 +2,9 @@
 #mysql -uKORISNIK -p --default_character_set=utf8 < skripta.sql
 
 
-drop database if exists tjakopec_1;
-create database tjakopec_1 charset utf8;
-use tjakopec_1;
+drop database if exists angularcrud;
+create database angularcrud charset utf8;
+use angularcrud;
 
 create table autor(
  sifra int not null primary key auto_increment,

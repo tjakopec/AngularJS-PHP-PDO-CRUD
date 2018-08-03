@@ -1,4 +1,4 @@
-# AngulaJS-PHP-PDO-CRUD
+# AngularJS-PHP-PDO-CRUD
 Jednostavan primjer CRUD aplikacije koristeći Angular JS, PHP s PDO 
 
 Korištene tehnologije:
